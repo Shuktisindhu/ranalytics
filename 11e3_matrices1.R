@@ -3,6 +3,7 @@
 #vector ----
 (v1 = 1:24)
 
+?dim
 dim(v1)
 attributes(v1)
 class(v1)
