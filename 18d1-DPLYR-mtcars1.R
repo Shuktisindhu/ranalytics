@@ -64,6 +64,15 @@ mtcars %>% summarise_at(c("mpg", "wt"), mean, na.rm = TRUE)
 
 sample_frac(mtcars, 0.2, replace=T)
 sample_n(mtcars, 60, replace=T) %>% select(mpg)
+mtcars %>% sample_n(10,replace=F) %>% select(mpg,wt,gear,hp) %>% group_by(gear) %>% summarise(mean(mpg), min(hp), min_wt=min(wt)) %>% arrange(-min_wt)
+
+library(ggplot2)
+# Basic histogram
+ggplot(mtcars, aes(x=mpg)) + geom_histogram(bins=5)
+
+library(ggplot2)
+# Basic barplot
+ggplot(data=mtcars, aes(x=gear, fill=factor(gear))) + geom_bar(stat="count")
 
 #Rows having least mpg (last 2)
 top_n(mtcars,-2, mpg)
